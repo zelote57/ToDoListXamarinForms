@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ToDoListApp.Views.MainPage"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:behaviors="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True">
+
+    <StackLayout>
+        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+            <Label Text="Lista de Tareas" HorizontalTextAlignment="Center" TextColor="White" FontSize="20"/>
+        </Frame>
+        <StackLayout Padding="20">
+            <Button
+                    x:Name="AddButton"
+                    Command="{Binding CreateTaskCommand}"
+                    BackgroundColor="#2196F3"
+                    IsEnabled="{Binding IsNotBusy}"
+                    Text="Agregar Tarea"
+                    TextColor="White" />
+        </StackLayout>
+        <StackLayout>
+            <ListView
+                    x:Name="TasksListView"
+                    BackgroundColor="Transparent"
+                    CachingStrategy="RecycleElement"
+                    HasUnevenRows="True"
+                    IsRefreshing="{Binding IsBusy}"
+                    ItemsSource="{Binding Tasks}">
+                <ListView.Behaviors>
+                    <behaviors:EventToCommandBehavior
+                        Command="{Binding OnTaskTappedCommand}"
+                        EventArgsConverter="{StaticResource LocalItemTappedConverter}"
+                        EventName="ItemTapped" />
+                </ListView.Behaviors>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding TaskName}" TextColor="Black" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>

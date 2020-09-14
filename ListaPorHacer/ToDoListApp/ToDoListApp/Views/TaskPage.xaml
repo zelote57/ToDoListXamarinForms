@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ToDoListApp.Views.TaskPage"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:behaviors="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True">
+    <ContentPage.Content>
+        <ScrollView VerticalOptions="FillAndExpand">
+            <StackLayout >
+                <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+                    <Label Text="Editar Tarea" HorizontalTextAlignment="Center" TextColor="White" FontSize="20"/>
+                </Frame>
+                <StackLayout
+                    x:Name="FormLayout"
+                Padding="30, 30, 30, 0"
+                    Spacing="16"
+                    VerticalOptions="StartAndExpand">
+                    <StackLayout
+                        Padding="12"
+                        AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"
+                        AbsoluteLayout.LayoutFlags="PositionProportional"
+                        IsVisible="{Binding IsBusy}">
+                        <ActivityIndicator IsRunning="{Binding IsBusy}" Color="Black" />
+                        <Label                            HorizontalOptions="Center"
+                            Text="Actualizando..."
+                            TextColor="Black" />
+                    </StackLayout>
+                    <StackLayout Spacing="8">
+                        <Label FontSize="12" Text="Nombre de la Tarea" />
+                        <Entry Text="{Binding Path=MyTask.TaskName}"/>
+                    </StackLayout>
+                    <StackLayout Spacing="8">
+                        <Label FontSize="12" Text="Estado" />
+                        <Picker
+                            Title="Seleccione"
+                            HorizontalOptions="FillAndExpand"
+                            ItemDisplayBinding="{Binding Name}"
+                            ItemsSource="{Binding Path=StatusTypesList}"
+                            SelectedItem="{Binding SelectedStatusType}" />
+                    </StackLayout>
+                    <Grid ColumnSpacing="16">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="0" Spacing="8">
+                            <Label
+                                Margin="0,8,0,0"
+                                FontSize="12"
+                                Text="ELIMINAR" />
+                        </StackLayout>
+                        <StackLayout Grid.Column="3" Spacing="12">
+                            <Switch HorizontalOptions="StartAndExpand" IsToggled="{Binding Path=MustDelete}" />
+                        </StackLayout>
+                    </Grid>
+                    <StackLayout
+                    Padding="0,15,0,40"
+                    HorizontalOptions="CenterAndExpand"
+                    Orientation="Horizontal"
+                    VerticalOptions="EndAndExpand">
+                        <Button
+                        Margin="0,0,10,0"
+                        BackgroundColor="#2196F3"
+                        Command="{Binding UpdateTaskCommand}"
+                        HeightRequest="45"
+                        HorizontalOptions="StartAndExpand"
+                        IsEnabled="{Binding IsNotBusy}"
+                        Text="Actualizar"
+                        TextColor="White"
+                        WidthRequest="120" />
+                        <Button
+                        Margin="10,0,0,0"
+                        BackgroundColor="#2196F3"
+                        Command="{Binding LoadMainViewCommand}"
+                        HeightRequest="45"
+                        HorizontalOptions="EndAndExpand"
+                        IsEnabled="{Binding IsNotBusy}"
+                        Text="Cancelar"
+                        TextColor="White"
+                        WidthRequest="120" />
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>            
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
