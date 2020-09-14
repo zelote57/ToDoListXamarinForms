@@ -55,7 +55,7 @@ namespace ToDoListApp.ViewModels
 
             if (string.IsNullOrEmpty(SelectedStatusType?.Code))
             {
-                await _dialogService.DisplayAlertAsync("Error", "Debe seleccionar estador de la Tarea", "OK");
+                await _dialogService.DisplayAlertAsync("Error", "Debe seleccionar estado de la Tarea", "OK");
                 return;
             }
 
