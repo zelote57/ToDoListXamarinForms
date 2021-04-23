@@ -30,9 +30,12 @@ namespace ToDoListApp
             containerRegistry.RegisterForNavigation<Views.MainPage>();
             containerRegistry.RegisterForNavigation<Views.TaskPage>();
             containerRegistry.RegisterForNavigation<Views.CreateTaskPage>();
+            containerRegistry.RegisterForNavigation<Views.PaymentContainerPage>();
+
             containerRegistry.RegisterForNavigation<Views.MainPage, ViewModels.MainPageViewModel>();
             containerRegistry.RegisterForNavigation<Views.TaskPage, ViewModels.TaskPageViewModel>();
             containerRegistry.RegisterForNavigation<Views.CreateTaskPage, ViewModels.CreateTaskPageViewModel>();
+            containerRegistry.RegisterForNavigation<Views.PaymentContainerPage, ViewModels.PaymentContainerPageViewModel>();
         }
         
         private void RegisterServices(IContainerRegistry containerRegistry)

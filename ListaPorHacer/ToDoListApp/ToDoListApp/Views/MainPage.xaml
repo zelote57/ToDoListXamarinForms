@@ -7,6 +7,17 @@
              prism:ViewModelLocator.AutowireViewModel="True">
 
     <StackLayout>
+        <Frame BackgroundColor="#42f5e3" Padding="24" CornerRadius="0">
+            <StackLayout>
+                <Button
+                    x:Name="TestButton"
+                    Command="{Binding PayCommand}"
+                    BackgroundColor="WhiteSmoke"
+                    IsEnabled="{Binding IsNotBusy}"
+                    Text="Pagar"
+                    TextColor="Black" />
+            </StackLayout>
+        </Frame>
         <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
             <Label Text="Lista de Tareas" HorizontalTextAlignment="Center" TextColor="White" FontSize="20"/>
         </Frame>

@@ -72,6 +72,11 @@ namespace ToDoListApp.ViewModels
             await _navigationService.NavigateAsync(nameof(Views.CreateTaskPage));
         }
 
+        private async Task Pay()
+        {
+            await _navigationService.NavigateAsync(nameof(Views.PaymentContainerPage));
+        }
+
         private void ClearProp()
         {
             Tasks = new ObservableRangeCollection<Tasks>();
@@ -85,6 +90,7 @@ namespace ToDoListApp.ViewModels
 
         public DelegateCommand LoadToDoListCommand => new DelegateCommand(async () => await LoadToDoList()).ObservesCanExecute(() => IsNotBusy);
         public DelegateCommand CreateTaskCommand => new DelegateCommand(async () => await CreateTask()).ObservesCanExecute(() => IsNotBusy);
+        public DelegateCommand PayCommand => new DelegateCommand(async () => await Pay()).ObservesCanExecute(() => IsNotBusy);
 
         #endregion
 
