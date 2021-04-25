@@ -8,8 +8,18 @@ namespace ToDoListApp.Views
     {
         public PaymentContainerPage()
         {
+            var urlSite = "";
+            
             InitializeComponent();
-            this.WvPayment.Source = "https://www.google.com/";
+            
+            InitWebView(urlSite);
+
+        }
+
+        public void InitWebView(string urlSite)
+        {
+            WvPayment.Source = urlSite;
+            //WvPayment.CanGoForward();
         }
     }
 }
