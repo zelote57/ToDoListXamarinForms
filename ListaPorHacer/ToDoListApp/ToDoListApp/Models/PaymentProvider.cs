@@ -25,30 +25,20 @@ namespace ToDoListApp.Models
         public bool IsSuccess { get; set; }
     }
 
-    public class PaymentData
+    public class PaymentDataRequest
     {
         public string OrderId { get; set; }
         public string Amount { get; set; }
         public string Email { get; set; }
         public string Currency { get; set; }
         public string Mode { get; set; }
+        public string Language { get; set; }
         public string CardType { get; set; }
     }
+    public class PaymentResponse
+    {
+        public string Status { get; set; }
+        public string ErrorMessage { get; set; }
+        public string RedirectionUrl { get; set; }
+    }
 }
-
-//const val UNKNOWN_ERROR = 1
-
-//// Timeout error
-//const val TIMEOUT_ERROR = 2
-
-//// No connection error
-//const val NO_CONNECTION_ERROR = 3
-
-//// Server error
-//const val SERVER_ERROR = 4
-
-//// Payment cancelled error
-//const val PAYMENT_CANCELLED_ERROR = 5
-
-//// Payment refused error
-//const val PAYMENT_REFUSED_ERROR = 6
